@@ -1,7 +1,34 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<!-- web.xml is Deployment Descriptor(DD) which exist for setting web application in WAS
+	(more information : http://lng1982.tistory.com/96)
+	
+	 It needs to declare DispatcherServlet in web.xml for spring MVC. When 
+		DispatcherServlet is initialized, spring tries to load application context 
+		from [servlet name]-servlet.xml file. -->
+	<display-name>Archetype Created Web Application</display-name>
+
+<!-- Resource when web call http://localhost:8080 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- In this case, It will be try to load springmvc-dispatcher-servlet.xml
+	If servlet is not loaded in tomcat, check project properties->Deployment Assembly(in Eclipse)
+	
+	* load-on-startup : ordering when servlet is loaded -->
+	<servlet>
+		<servlet-name>springmvc-dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>springmvc-dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 </web-app>
