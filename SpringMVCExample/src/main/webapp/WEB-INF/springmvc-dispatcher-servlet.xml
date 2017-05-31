@@ -6,7 +6,7 @@
  http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<!-- context:component-scan allows spring to load its class and child class 
-		by base-package. -->
+		by base-package. It is added in Spring 2.5 -->
 	<context:component-scan base-package="com.swabber.springmvc.controller"></context:component-scan>
 
 	<!-- InternalResourceViewResolver is resource view resolver bean which will 
@@ -23,6 +23,11 @@
 		</property>
 	</bean>
 
+	<!-- this is added in Spring 3.0. It declares explicit support for annotaion-driven 
+		MVC controllers(i.e. @RequestMapping, @RequestBody, @ResponsBody) 
+		(More Information : 
+		http://kdarkdev.tistory.com/103 
+		https://stackoverflow.com/questions/3977973/whats-the-difference-between-mvcannotation-driven-and-contextannotation) -->
 	<mvc:annotation-driven />
 
 </beans>
